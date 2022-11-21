@@ -13,21 +13,17 @@ jobs:
 
   build:
     name: Build
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.8"]
+    runs-on: ubuntu-20.04
     steps:
-  
       - name: Check out code
         uses: actions/checkout@v2
-      
+        with:
+          # Semantic version range syntax or exact version of a Python version
+          python-version: '3.8'
       - name: Install dependencies
         run: |
           python -m pip install pip==21.0
           pip uninstall cryptography -y
-          pip install cryptography==36.0.2 -y
-          pip install opencv-python==4.5.4.60
           pip install easyocr pillow numpy
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     
