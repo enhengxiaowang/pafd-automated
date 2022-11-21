@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.7", "3.8"]
+        python-version: ["3.8"]
     steps:
   
       - name: Check out code
@@ -24,7 +24,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
+          python -m pip install pip==21.0
           pip uninstall cryptography -y
           pip install cryptography==36.0.2 -y
           pip install opencv-python==4.5.4.60
